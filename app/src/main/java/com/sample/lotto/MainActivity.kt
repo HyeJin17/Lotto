@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
             intent = Intent(this@MainActivity, ConstellationActivity::class.java)
             startActivity(intent)
         }
-
         NameCardView.setOnClickListener {
             intent = Intent(this@MainActivity, NameActivity::class.java)
             startActivity(intent)
