@@ -136,7 +136,6 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
                 app:srcCompat="@drawable/name" />
