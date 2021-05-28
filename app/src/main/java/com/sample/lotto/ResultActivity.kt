@@ -17,9 +17,7 @@ class ResultActivity : AppCompatActivity() {
         //val result_sorted = result?.sortedBy() 동작 오류
         //println("result sorted is $result")
 
-        result?.let {
-            updateLottoBallImages(result.sortedBy { it })
-        }
+       val result_sorted = result?.sorted()
     }
 
     private fun updateLottoBallImages(result_sorted : List<Int>) {

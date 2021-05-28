@@ -10,6 +10,7 @@ class NameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_name)
 
+        //여기부터
         val btnGoName = findViewById<Button>(R.id.btnGoName)
         val btnBack = findViewById<Button>(R.id.btnBack)
 
@@ -18,6 +19,6 @@ class NameActivity : AppCompatActivity() {
         }
         btnBack.setOnClickListener {
             finish()
-        }
+        }  //Intent 브런치의 내용
     }
 }

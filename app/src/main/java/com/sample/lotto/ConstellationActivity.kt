@@ -12,8 +12,9 @@ class ConstellationActivity : AppCompatActivity() {
 
         val btnGoResult = findViewById<Button>(R.id.btnGoResult)
 
+       //여기부터
         btnGoResult.setOnClickListener {
-            startActivity(Intent(this, ResultActivity::class.java))
+            startActivity(Intent(this, ResultActivity::class.java)) //Intent Branch 부분
         }
     }
 }

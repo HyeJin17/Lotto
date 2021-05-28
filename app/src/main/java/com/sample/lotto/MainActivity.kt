@@ -44,7 +44,6 @@ fun getShuffledLottoNumbers () : MutableList<Int>{
     return list.subList(0,6)
 }
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,12 +61,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, NameActivity::class.java))
         }
 
+       //여기부터
         val cardRandom = findViewById<CardView>(R.id.cardRandom)
         cardRandom.setOnClickListener {
             val intent = Intent(this, ResultActivity::class.java)
             intent.putIntegerArrayListExtra("result", ArrayList(getShuffledLottoNumbers()))
             startActivity(intent)
-        }
+        } //Intent 브런치의 내용 응용
 
     }
 }
