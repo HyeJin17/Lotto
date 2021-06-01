@@ -3,6 +3,9 @@ package com.sample.lotto
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ResultActivity : AppCompatActivity() {
     //val lottoImageStartId = R.id.imageView1
@@ -10,6 +13,7 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+        val strConstellation = intent.getStringExtra("constellation")
         val result = intent.getIntegerArrayListExtra("result") ?: return
 
         // result.sort()
@@ -17,6 +21,10 @@ class ResultActivity : AppCompatActivity() {
         //val result_sorted = result?.sortedBy() 동작 오류
         //println("result sorted is $result")
 
+        strConstellation?.let{
+            val resultLabel = findViewById<TextView>(R.id.resultLabel)
+            resultLabel.text = "${strConstellation}의 ${SimpleDateFormat("yyyy년 MM월 dd일").format(Date())} 로또 번호입니다"
+        }
         result?.let {
             updateLottoBallImages(result.sortedBy { it })
         }
