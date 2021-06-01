@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,18 +17,21 @@ class ResultActivity : AppCompatActivity() {
         val strConstellation = intent.getStringExtra("constellation")
         val result = intent.getIntegerArrayListExtra("result") ?: return
 
+        strConstellation?.let {
+            val resultLabel = findViewById<TextView>(R.id.resultLabel)
+            resultLabel.text = "${strConstellation}의 ${SimpleDateFormat("yyyy년 MM월 dd일").format((Date()))}"
+        }
+
         // result.sort()
         // val result_sorted = result?.sortedBy { it } //동작
         //val result_sorted = result?.sortedBy() 동작 오류
         //println("result sorted is $result")
 
-        strConstellation?.let{
-            val resultLabel = findViewById<TextView>(R.id.resultLabel)
-            resultLabel.text = "${strConstellation}의 ${SimpleDateFormat("yyyy년 MM월 dd일").format(Date())} 로또 번호입니다"
-        }
         result?.let {
             updateLottoBallImages(result.sortedBy { it })
         }
+
+        Toast.makeText(this,"Result ACtivity", Toast.LENGTH_LONG).show()
     }
 
     private fun updateLottoBallImages(result_sorted : List<Int>) {
@@ -49,6 +53,6 @@ class ResultActivity : AppCompatActivity() {
         imageView4.setImageResource(lottoBallImageStartId +result_sorted[3]-1)
         imageView5.setImageResource(lottoBallImageStartId +result_sorted[4]-1)
         imageView6.setImageResource(lottoBallImageStartId +result_sorted[5]-1)
-
+        println(result_sorted)
     }
 }
