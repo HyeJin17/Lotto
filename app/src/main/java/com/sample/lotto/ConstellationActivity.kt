@@ -37,39 +37,21 @@ class ConstellationActivity : AppCompatActivity() {
 
         txtConstell.text = makeConstellationString(datePicker.month, datePicker.dayOfMonth)
         datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), object : CalendarView.OnDateChangeListener, DatePicker.OnDateChangedListener{
-            override fun onSelectedDayChange(p0:CalendarView, p1:Int, p2:Int, p3:Int) {
+            override fun onSelectedDayChange(view: CalendarView, year: Int, month: Int, dayOfMonth: Int) {
                 TODO("Not yet implemented")
             }
 
             override fun onDateChanged(view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-                TODO("Not yet implemented")
-                txtConstell.text = makeConstellationString(datePicker.month, datePicker.dayOfMonth)
+                txtConstell.text = makeConstellationString(datePicker.month,datePicker.dayOfMonth)
             }
         }
         )
         btnGoResult.setOnClickListener {
-            val itent = Intent(this, ResultActivity::class.java)
-            intent.putIntegerArrayListExtra("result", ArrayList(getLottoNumbersFromHash(txtConstell.text.toString())))
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putIntegerArrayListExtra("result", java.util.ArrayList(getLottoNumbersFromHash(makeConstellationString(datePicker.month, datePicker.dayOfMonth))))
             intent.putExtra("constellation", makeConstellationString(datePicker.month, datePicker.dayOfMonth))
             startActivity(intent)
         }
-
-        //        val calendar = Calendar.getInstance()
-
-
-/*        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-            object : CalendarView.OnDateChangeListener, DatePicker.OnDateChangedListener {
-                override fun onSelectedDayChange(view: CalendarView, year: Int, month: Int, dayOfMonth: Int) {
-                    textHoroscope.text = makeHoroscopeString(datePicker.month, datePicker.dayOfMonth)
-                }
-                override fun onDateChanged(view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-                    TODO("Not yet implemented")
-                }
-            }
-                )*/
-
-
-        //textHoroscope.text = makeConstellationString(datePicker.month, datePicker.dayOfMonth)
     }
 
     private fun makeConstellationString(month: Int, dayOfMonth: Int): String {
